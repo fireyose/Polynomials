@@ -21,8 +21,8 @@ float evalPoly (Polynomial &);                      // Evaluates polynomial for 
 void multPoly (Polynomial &);                       // Multiplies polynomial by user input coefficient 
 void addPoly (Polynomial &);                        // Adds term to the polynomial
 
-int main()
-{ Polynomial thePoly;    // Declare object 'thePoly' type Polynomial
+int main() {
+  Polynomial thePoly;    // Declare object 'thePoly' type Polynomial
   ifstream infile;       // Holds input file stream
   ofstream outfile;      // Holds output file stream
   string filename;       // Hold user input filename
@@ -100,13 +100,13 @@ int main()
 }
 
 /*
-  Functon:          openFile
-  Description:      opens input stream
-                    checks if successful
-  Parameters:       ifstream inf    - input/output - holds input file stream
-                    string filename - input/output - holds filename
-		    Polynomial Poly - input        - holds object 
-  Returns:          True if file successfuly opened and read, else false
+Functon:          openFile
+Description:      opens input stream
+                  checks if successful
+Parameters:       ifstream inf    - input/output - holds input file stream
+                  string filename - input/output - holds filename
+		  Polynomial Poly - input        - holds object 
+Returns:          True if file successfuly opened and read, else false
 */
 
 bool openFile (ifstream &inf, string &fileName, Polynomial &Poly) {
@@ -128,10 +128,10 @@ bool openFile (ifstream &inf, string &fileName, Polynomial &Poly) {
 }
 
 /*
-  Function:         printMenu
-  Description:      prints menu
-  Parameters:       None
-  Returns:          void
+Function:         printMenu
+Description:      prints menu
+Parameters:       None
+Returns:          void
  */
 
 void printMenu () { 
@@ -150,11 +150,11 @@ void printMenu () {
 }
 
 /*
-  Function:       choiceIsX
-  Description:    checks if user choice is 'X'
-  Parameters:     char C - input - holds user's choice
-  Returns:        True is choice is 'X', else false
- */
+Function:       choiceIsX
+Description:    checks if user choice is 'X'
+Parameters:     char C - input - holds user's choice
+Returns:        True is choice is 'X', else false
+*/
 
 bool choiceIsX (char &C) {
   if (toupper (C) == 'X')
@@ -164,11 +164,11 @@ bool choiceIsX (char &C) {
 }
 
 /*
-  Function:       evalPoly
-  Description:    Evaluates the polynomial for user input 'X'
-  Parameters:     Polynomial Poly - input - holds object
-  Returns:        evaluated polynomial total type float
- */
+Function:       evalPoly
+Description:    Evaluates the polynomial for user input 'X'
+Parameters:     Polynomial Poly - input - holds object
+Returns:        evaluated polynomial total type float
+*/
 
 float evalPoly (Polynomial &Poly) {
   double X;
@@ -179,11 +179,11 @@ float evalPoly (Polynomial &Poly) {
 }
 
 /*
-  Function:       multPoly
-  Description:    multiplies polynomial by the user's input
-  Parameter:      Polynomial Poly - input - holds object
-  Returns:        void
- */
+Function:       multPoly
+Description:    multiplies polynomial by the user's input
+Parameter:      Polynomial Poly - input - holds object
+Returns:        void
+*/
 
 void multPoly (Polynomial &Poly) {
   float factor;
@@ -193,12 +193,12 @@ void multPoly (Polynomial &Poly) {
 }
 
 /*
-  Function:       addPoly
-  Description:    adds user input coefficient and exponent
-                  to Polynomial
-  Parameters:     Polynomial Poly - input - holds object
-  Returns:        void
- */
+Function:       addPoly
+Description:    adds user input coefficient and exponent
+                to Polynomial
+Parameters:     Polynomial Poly - input - holds object
+Returns:        void
+*/
 
 void addPoly (Polynomial &Poly) {
   float coeff;
