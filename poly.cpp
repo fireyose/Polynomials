@@ -1,7 +1,4 @@
-
 // Author:              Youssef Almkari
-// Course:              CSC136
-// Assignment:          Project 2
 // Filename:            poly.cpp
 // Purpose:             Implementation of Class poly
 //                      Produce an interface that handles polynomials
@@ -12,10 +9,6 @@
 #include <cmath>
 using namespace std;
 
-  //////
-  // Constructor
-  //////
-
 /*
 Function: 	constructor
 Member Type:	Mutator
@@ -24,14 +17,9 @@ Parameters: 	none
 Returns:      	N/A
 */
 
-  Polynomial::Polynomial()
-  { setSize(0); }
-
-  //////
-  // Gets and Sets
-  //////
+Polynomial::Polynomial()
+{ setSize(0); }
   
-  // Sets 
 /*
 Function: 	setTerm
 Member Type:	Mutator
@@ -41,10 +29,10 @@ Parameters: 	int index	- input 	- the index at which the values are stored
 		int ex 		- input 	- the exponent 
 Returns:      	true if the value is set, false if not
 */ 
-  void Polynomial::setTerm(int index, float co, int ex)
-  { setCoeff (index, co);
-    setExponent (index, ex);
-  }
+void Polynomial::setTerm(int index, float co, int ex) {
+  setCoeff (index, co);
+  setExponent (index, ex);
+}
   
 /*  
 Function: 	setCoeff
@@ -54,8 +42,8 @@ Parameters: 	int index	- input 	- the index at which the values are stored
 		float co 	- input 	- the coefficient for the user
 Returns:      	true if the value is set, false if not
 */ 
-  void Polynomial::setCoeff(int index, float co)
-  { termList[index].coeff = co; }
+void Polynomial::setCoeff(int index, float co)
+{ termList[index].coeff = co; }
   
 /*
 Function: 	setExponent
@@ -65,10 +53,9 @@ Parameters: 	int index	- input 	- the index at which the values are stored
 		int ex 		- input 	- the exponent for the user
 Returns:      	true if the value is set, false if not
 */
-  void Polynomial::setExponent(int index, int ex)
-  { termList[index].expn = ex; }
-  
-  // Gets
+void Polynomial::setExponent(int index, int ex)
+{ termList[index].expn = ex; }
+
 
 /*
 Function: 	getTerm
@@ -78,8 +65,8 @@ Parameters: 	int index	- input - the index at which the values are stored
 Returns:        The requested Term
 Precondition:	index is an in use (active) index
 */
-  Term Polynomial::getTerm(int index) const
-  { return (termList[index]); }
+Term Polynomial::getTerm(int index) const
+{ return (termList[index]); }
   
 /*
 Function: 	getSize
@@ -88,8 +75,8 @@ Description: 	Furnishes the number of Terms in the Polynomial
 Parameters: 	none
 Returns:        the number of Terms in the Polynomial
 */
-  int Polynomial::getSize() const
-  { return (size); }
+int Polynomial::getSize() const
+{ return (size); }
 
 /*
 Function: 	getCoeff
@@ -99,8 +86,8 @@ Parameters: 	int index	- input - the index at which the values are stored
 Returns:        The requested coefficient
 Precondition:	index is an in use (active) index
 */
-  float Polynomial::getCoeff(int index) const
-  { return (termList[index].coeff); }
+float Polynomial::getCoeff(int index) const
+{ return (termList[index].coeff); }
 
 /*
 Function: 	getExponent
@@ -110,8 +97,8 @@ Parameters: 	int index	- input - the index at which the values are stored
 Returns:      	The requested exponent
 Precondition:	index is an in use (active) index
 */
-  int Polynomial::getExponent(int index) const
-  { return (termList[index].expn); }
+int Polynomial::getExponent(int index) const
+{ return (termList[index].expn); }
   
 /*
 Function: 	operator ()
@@ -120,12 +107,12 @@ Description: 	Evaluate the polynomial for variable x
 Parameters: 	x  - input - variable that is standing for value of x
 Returns:      	The polynomial evaluated for x
 */
-  double Polynomial::operator()(double x) const
-  { double total = 0;
-    for (int i = 0; i < getSize(); i++)
-      total = total + (pow(x, getExponent(i)) * getCoeff(i));
-    return total;
-  }
+double Polynomial::operator()(double x) const {
+  double total = 0;
+  for (int i = 0; i < getSize(); i++)
+    total = total + (pow(x, getExponent(i)) * getCoeff(i));
+  return total;
+}
   
 /*
 Function: 	multiply
@@ -134,10 +121,10 @@ Description: 	Multiply each coefficient by the scalar arg factor
 Parameters: 	fact  - input - variable that is multiplying against all the coefficents
 Returns:      	void
 */
-  void Polynomial::operator *=(float factor)
-  { for (int i = 0; i < getSize(); i++)
-      setCoeff (i, getCoeff (i) * factor);
-  }
+void Polynomial::operator *=(float factor) {
+  for (int i = 0; i < getSize(); i++)
+    setCoeff (i, getCoeff (i) * factor);
+}
   
 /*
 Function: 	add
@@ -147,11 +134,11 @@ Parameters: 	coefficent  - input - the coefficent of the term being added
 		exponent    - input - the exponent of the term being added
 Returns:      	true if the term is added, false otherwise
 */
-  bool Polynomial::add(float coefficient, int exponent)
-  { int dupLoc = 0;
-    for (int i = 0; i < getSize(); i++)
-      if (getExponent(i) == exponent)
-	dupLoc = i;
+bool Polynomial::add(float coefficient, int exponent) {
+  int dupLoc = 0;
+  for (int i = 0; i < getSize(); i++)
+    if (getExponent(i) == exponent)
+      dupLoc = i;
     // Matching Exponents
     if (dupLoc > 0)
       setCoeff (dupLoc, getCoeff(dupLoc) + coefficient);
@@ -164,8 +151,8 @@ Returns:      	true if the term is added, false otherwise
     // No match or room
     else 
       return false;
-    return true;
-  }
+  return true;
+}
 
 /*
 Function: 	add
@@ -174,8 +161,8 @@ Description: 	Add a term to the polynomial
 Parameters: 	T  - input - the Term being added
 Returns:      	true if the term is added, false otherwise
 */
-  bool Polynomial::add(const Term &T)
-  { return (add(T.coeff,T.expn)); }
+bool Polynomial::add(const Term &T)
+{ return (add(T.coeff,T.expn)); }
   
 /*
 Function: 	readFile
@@ -184,28 +171,29 @@ Description: 	Loads up the terms from a user declared filename
 Parameters: 	file - input/output - stream variable 
 Returns:      	void
 */
-  void Polynomial::readFile(ifstream &file)
-  { Term T;
-    while(file >> T)
-      add(T);
-    file.close();
-  }
+void Polynomial::readFile(ifstream &file) {
+  Term T;
+  while(file >> T)
+    add(T);
+  file.close();
+}
 
-  void Polynomial::sort() // sorts all of the terms in the factor array
-  { int idxMax = 0;
-    for (int spot = getSize()-1; spot > 0; spot--) {
-      idxMax = spot;
-      for (int idx = 0; idx < spot; idx++)
-	if (getExponent(idxMax) > getExponent(idx))
-	  idxMax = idx;
+void Polynomial::sort() { // sorts all of the terms in the factor array
+  int idxMax = 0;
+  for (int spot = getSize()-1; spot > 0; spot--) {
+    idxMax = spot;
+    for (int idx = 0; idx < spot; idx++) {
+      if (getExponent(idxMax) > getExponent(idx))
+	idxMax = idx;
       if (idxMax != spot) {
-	int tempExpn = getExponent(idxMax);
+      	int tempExpn = getExponent(idxMax);
 	float tempCoeff = getCoeff(idxMax);
 	setTerm (idxMax, getCoeff(spot), getExponent(spot));
 	setTerm (spot, tempCoeff, tempExpn); 
       }
     }
   }
+}
   
 /*
 Function: 	setSize
@@ -215,8 +203,8 @@ Description: 	Sets the term in the variable at a specific index. Private because
 Parameters: 	int s	- input	- the index of the last value in the term array
 Returns:      	N/A
 */ 
-  void Polynomial::setSize(int s)
-  { size = s; }
+void Polynomial::setSize(int s)
+{ size = s; }
   
 /*
 Function: 	operator >>
@@ -225,10 +213,10 @@ Parameters: 	ifstream file	- input/output - the input stream
 		Term T		- output only  - the Term that will hold the data read in
 Returns:      	ifstream 
 */
-  ifstream &operator >>(ifstream &file, Term &T)
-  { file >> T.coeff >> T.expn;
-    return file;
-  }
+ifstream &operator >>(ifstream &file, Term &T) {
+  file >> T.coeff >> T.expn;
+  return file;
+}
 
 /*
 Function: 	operator <<
@@ -237,15 +225,15 @@ Parameters: 	out - input/output - output stream
 		P   - input        - The Polynomial to print
 Returns:        void
 */
-  ostream &operator <<(ostream &out,const Polynomial &P)
-  { for (int i = 0; i < P.getSize(); i++) {
-      if (i == P.getSize()-1)
-	out << P.getCoeff(i) << "x^" << P.getExponent(i);
-      else
-	out << P.getCoeff(i) << "x^" << P.getExponent(i) << " + ";
-    }
-    return out;
-  }
+ostream &operator <<(ostream &out,const Polynomial &P) {
+  for (int i = 0; i < P.getSize(); i++) {
+    if (i == P.getSize()-1)
+      out << P.getCoeff(i) << "x^" << P.getExponent(i);
+    else
+      out << P.getCoeff(i) << "x^" << P.getExponent(i) << " + ";
+  } 
+  return out;
+}
 
 /*
 Function: 	operator <<
@@ -254,8 +242,8 @@ Parameters: 	ofstream &out  - 	input/output - The output file stream
 		const Polynomial &P	input	     - Polynomial to save
 Returns:        ofstream - the output file stream
 */
-  ofstream &operator <<(ofstream &out,const Polynomial &P)
-  { for (int i = 0; i < P.getSize(); i++)
-      out << P.getCoeff (i) << " " <<  P.getExponent (i) << endl;
-    return out;
-  }
+ofstream &operator <<(ofstream &out,const Polynomial &P) {
+  for (int i = 0; i < P.getSize(); i++)
+    out << P.getCoeff (i) << " " <<  P.getExponent (i) << endl;
+  return out;
+}
