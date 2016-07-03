@@ -37,10 +37,6 @@ class Polynomial {
   */
   Polynomial();
   
-  //////
-  // Sets
-  //////
-  
   /*
   Function: 	setTerm
   Member Type:	Mutator
@@ -71,10 +67,6 @@ class Polynomial {
   Returns:    	true if the value is set, false if not
   */
   void setExponent(int index, int ex);
-  
-  //////
-  // Gets
-  //////
 
   /*
   Function: 	getTerm
